@@ -14,6 +14,11 @@ Organise your pages into folders for easy filtering. Perfect for large amounts o
 
 Folders gives you the ability to better organize the back-end of your WordPress site by allowing you to add pages into folders. You can then filter your pages by the folder they belong to. This is a handy plugin for those with lots of pages.
 
+== Screenshots ==
+
+1. The Folder View
+2. Adding a Folder View
+
 == Installation ==
 
 Step 1: Download and install the Folders plugin.
