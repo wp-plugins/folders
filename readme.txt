@@ -18,18 +18,13 @@ Folders gives you the ability to better organize the back-end of your WordPress 
 
 Step 1: Download and install the Folders plugin.
 
-Step 2: In the “Folders” menu, add your required folders.
+Step 2: In the “Folder Settings” menu, select which post type you want folders to be used with.
 
-Step 3: Either bulk edit or singularly add your pages and posts into your folders of choice to complete your better organised pages list.
+Step 3: Add in new folders for your post type.
+
+Step 4: Either bulk edit or singularly add your pages and posts into your folders of choice to complete your better organised pages list.
 
 == Changelog ==
-
-= 1.2.0 =
-- Added options for display on pages/posts
-
-= 1.1.0 =
-- Added Folders to Posts
-- Changed Icons
 
 = 1.0 =
 - Folders Plugin Released
