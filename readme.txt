@@ -39,4 +39,4 @@ Step 4: Either bulk edit or individually add your pages and posts into your new 
 
 == See more plugins from us ==
 
-Please donate to help us continue development on this plugin. [6-2 Design](http://62design.co.uk/wordpress-plugins/folders/ “Donate to keep this plugin under development“).
+Please donate to help us continue development on this plugin. [6-2 Design](http://62design.co.uk/wordpress-plugins/folders/ "Donate to keep this plugin under development").
