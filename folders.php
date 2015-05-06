@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Folders
  * Description: Arrange pages and/or posts into folders
- * Version: 1.0.0
+ * Version: 1.1.0
  * Author: Steve North (6-2 Design)
  * Author URI: http://62design.co.uk/wordpress-plugins/folders/
  */
@@ -206,6 +206,154 @@ if (!empty($globOptions['folders4posts']) && $globOptions['folders4posts'] == 1)
   add_action( 'manage_posts_custom_column', 'add_folder_posts_column_content', 10, 2 );
 }
 
+/************************
+*** CUSTOM POST TYPES ***
+*************************/
+
+
+function add_custom_posttype_folder_taxonomy() {
+  // get post types
+  global $globOptions;
+  if ($globOptions) {
+    foreach($globOptions as $key => $option) {
+      if ($option == 1) {
+        $types[$key] = str_replace('folders4', '', $key);
+      }
+    }
+
+    foreach($types as $type) {
+
+        register_taxonomy($type.'_folder', $type, array(
+          'hierarchical' => true,
+          'labels' => array(
+            'name' => _x( 'Folders', 'taxonomy general name' ),
+            'singular_name' => _x( 'Folder', 'taxonomy singular name' ),
+            'search_items' =>  __( 'Search Folders' ),
+            'all_items' => __( 'All Folders' ),
+            'parent_item' => __( 'Parent Folder' ),
+            'parent_item_colon' => __( 'Parent Folder:' ),
+            'edit_item' => __( 'Edit Folder' ),
+            'update_item' => __( 'Update Folder' ),
+            'add_new_item' => __( 'Add New Folder' ),
+            'new_item_name' => __( 'New Folder Name' ),
+            'menu_name' => __( 'Folders' ),
+          ),
+          'rewrite' => array(
+            'slug' => '',
+            'with_front' => false,
+            'hierarchical' => false
+          ),
+        ));
+
+    }
+  }
+  add_action( 'init', 'add_custom_posttype_folder_taxonomy', 0 );
+}
+
+function folders_add_posttype_taxonomy_filters() {
+  global $globOptions;
+  global $typenow;
+  if ($globOptions) {
+    foreach($globOptions as $key => $option) {
+      if ($option == 1) {
+        $types[$key] = str_replace('folders4', '', $key);
+      }
+    }
+
+    foreach($types as $type) {
+      $taxonomies = array($type.'_folder');
+      if( $typenow == $type ){
+        foreach ($taxonomies as $tax_slug) {
+          $tax_obj = get_taxonomy($tax_slug);
+          $tax_name = $tax_obj->labels->name;
+          $terms = get_terms($tax_slug);
+          if(count($terms) > 0) {
+            echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+            echo "<option value=''>Show All $tax_name</option>";
+            foreach ($terms as $term) {
+              echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
+            }
+            echo "</select>";
+          }
+        }
+        break;
+      }
+    }
+  }
+}
+  add_action( 'restrict_manage_posts', 'folders_add_posttype_taxonomy_filters' );
+
+  function searchForId($id, $array) {
+    foreach ($array as $key => $val) {
+      if ($val[0] === $id) {
+        return $key;
+      }
+    }
+    return null;
+  }
+
+  // Add Folders into Admin Menu
+  add_action('admin_menu', 'folders_posttype_in_admin_menu');
+  function folders_posttype_in_admin_menu(){
+    global $globOptions;
+    if($globOptions) {
+      foreach($globOptions as $key => $option) {
+        if ($option == 1 ) {
+          if ($key != 'folders4posts' && $key != 'folders4pages') {
+            $types[$key] = str_replace('folders4', '', $key);
+          }
+        }
+      }
+      if ($types) {
+        foreach($types as $i => $type) {
+          $upper = ucfirst($type);
+          $itemKey = searchForId($upper, $GLOBALS['menu']);
+          $taxonomies = array($type.'_folder');
+          add_menu_page( $upper.' Folders', $upper.' Folders', 'publish_pages', 'edit.php?post_type='.$type.'&'.$type.'_folder', false, plugin_dir_url(__FILE__).'/assets/img/folder-icon-posts.png', "{$itemKey}.5" );
+          add_submenu_page( 'edit.php?post_type='.$type.'&'.$type.'_folder', 'Add/Edit Folders', 'Add/Edit Folders', 'publish_pages', 'edit-tags.php?taxonomy='.$type.'_folder&post_type='.$type, false );
+          foreach ($taxonomies as $key => $tax_slug) {
+            $tax_obj = get_taxonomy($tax_slug);
+            $tax_name = $tax_obj->labels->name;
+            $terms = get_terms($tax_slug);
+            if(count($terms) > 0) {
+              foreach ($terms as $term) {
+                add_submenu_page( 'edit.php?post_type='.$type.'&'.$type.'_folder', $term->name, $term->name, 'publish_pages', 'edit.php?post_type='.$type.'&'.$type.'_folder='.$term->slug, false );
+              }
+            }
+          }
+          remove_submenu_page( 'edit.php?post_type='.$type.'&'.$type.'_folder', 'edit.php?post_type='.$type.'&'.$type.'_folder' );
+          remove_submenu_page( 'edit.php?post_type='.$type, 'edit-tags.php?taxonomy='.$type.'_folder&amp;post_type='.$type );
+        }
+      }
+    }
+  }
+
+  function add_folder_posttype_column( $columns ) {
+    $myCustomColumns = array(
+      'folder' => __( 'Folder', 'Folder' )
+    );
+    $columns = array_merge( $columns, $myCustomColumns );
+    return $columns;
+  }
+  add_filter( 'manage_posts_columns', 'add_folder_posttype_column' );
+
+  function add_folder_posttype_column_content( $column_name, $post_id ) {
+    if ( $column_name == 'folder' ) {
+      $ter = wp_get_post_terms($post_id, $type.'_folder' );
+      $count = count($ter);
+      foreach ($ter as $key => $term) {
+        if ($count === $key + 1) {
+        echo $term->name;
+        }
+        else {
+          echo $term->name.', ';
+        }
+      }
+    }
+  }
+  add_action( 'manage_posts_custom_column', 'add_folder_posttype_column_content', 10, 2 );
+
+
 /*************************/
 /********* OPTIONS *******/
 /*************************/
@@ -261,6 +409,25 @@ function folders_admin_page_callback(){ ?>
             </fieldset>
           </td>
         </tr>
+        <?php
+        $args = array(
+          'public' => true,
+          '_builtin' => false
+        );
+        $postTypes = get_post_types($args);
+        foreach ($postTypes as $type) { ?>
+        <tr>
+          <th scope="row">Use Folders with <?php echo ucfirst($type); ?></th>
+          <td>
+            <fieldset>
+                <label>
+                  <input name="folders_settings[folders4<?php echo $type; ?>]" type="checkbox" id="folders4<?php echo $type; ?>" value="1" <?php if (!empty($options['folders4'.$type]) && $options['folders4'.$type] == 1) {echo 'checked';} ?>/>
+                  <br />
+                </label>
+            </fieldset>
+          </td>
+        </tr>
+        <?php } ?>
     </table>
     <?php submit_button(); ?>
   </form>

@@ -8,11 +8,11 @@ Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Organise your pages into folders for easy filtering. Perfect for large amounts of pages.
+Organise your custom post types, pages and posts into folders. Perfect for large amounts of pages or posts.
 
 == Description ==
 
-Folders gives you the ability to better organize the back-end of your WordPress site by allowing you to add pages into folders. You can then filter your pages by the folder they belong to. This is a handy plugin for those with lots of pages.
+Folders gives you the ability to better organise the back-end of your WordPress site by allowing you to add pages and posts into folders. You can then filter your pages and posts by the folder they belong to from within the sidebar. A handy plugin for those with lots of pages or posts.
 
 == Screenshots ==
 
@@ -25,15 +25,18 @@ Step 1: Download and install the Folders plugin.
 
 Step 2: In the “Folder Settings” menu, select which post type you want folders to be used with.
 
-Step 3: Add in new folders for your post type.
+Step 3: Add new folders for your post type.
 
-Step 4: Either bulk edit or singularly add your pages and posts into your folders of choice to complete your better organised pages list.
+Step 4: Either bulk edit or individually add your pages and posts into your new folders to complete your better organised pages and posts list.
 
 == Changelog ==
+
+= 1.1.0 =
+- Added support for custom post types
 
 = 1.0 =
 - Folders Plugin Released
 
 == See more plugins from us ==
 
-Visit us to donate and see our other plugins [6-2 Design](http://62design.co.uk/ "Website Design and Development").
+Please donate to help us continue development on this plugin. [6-2 Design]( “Donate to keep this plugin under development“).
