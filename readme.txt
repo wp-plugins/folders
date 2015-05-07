@@ -36,6 +36,9 @@ If you come across a bug with your posts or pages no longer showing or the menu 
 
 == Changelog ==
 
+= 1.2.1 =
+- Fixed bug with Media folders not being editable
+
 = 1.2.0 =
 - Added support for media (attachments)
 
