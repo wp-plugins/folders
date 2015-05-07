@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Folders
  * Description: Arrange pages and/or posts into folders
- * Version: 1.2.0
+ * Version: 1.2.1
  * Author: Steve North, Aaron Taylor (6-2 Design)
  * Author URI: http://62design.co.uk/wordpress-plugins/folders/
  */

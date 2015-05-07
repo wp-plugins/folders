@@ -134,12 +134,11 @@ function folders_posttype_in_admin_menu() {
 
 
     if ($type == 'attachment') {
-      add_menu_page( 'Media Folders', 'Media Folders', 'publish_pages', "{$edit}?taxonomy=media_folder&post_type=attachment", false, plugin_dir_url(__FILE__).'../assets/img/folder-icon-posts.png', "{$itemKey}.5" );
+      add_menu_page( 'Media Folders', 'Media Folders', 'publish_pages', "edit-tags.php?taxonomy=media_folder&post_type=attachment", false, plugin_dir_url(__FILE__).'../assets/img/folder-icon-posts.png', "{$itemKey}.5" );
     } else {
       add_menu_page( $upper.' Folders', "{$upper} Folders", 'publish_pages', "{$edit}?post_type={$type}&{$tax_slug}", false, plugin_dir_url(__FILE__).'../assets/img/folder-icon-posts.png', "{$itemKey}.5" );
     }
     add_submenu_page( "{$edit}?post_type={$type}&{$tax_slug}", 'Add/Edit Folders', 'Add/Edit Folders', 'publish_pages', "edit-tags.php?taxonomy={$tax_slug}&post_type={$type}", false );
-
     $tax_obj = get_taxonomy($tax_slug);
     $tax_name = $tax_obj->labels->name;
     $terms = get_terms($tax_slug);
@@ -147,7 +146,7 @@ function folders_posttype_in_admin_menu() {
     if($terms) {
       foreach ($terms as $term) {
         if ($type == 'attachment') {
-          add_submenu_page( "{$edit}?taxonomy=media_folder&post_type=attachment", $term->name, $term->name, 'publish_pages', "{$edit}?taxonomy=media_folder&term={$term->slug}", false );
+          add_submenu_page( "edit-tags.php?taxonomy=media_folder&post_type=attachment", $term->name, $term->name, 'publish_pages', "{$edit}?taxonomy=media_folder&term={$term->slug}", false );
         } else {
           add_submenu_page( "{$edit}?post_type={$type}&{$tax_slug}", $term->name, $term->name, 'publish_pages', "{$edit}?post_type={$type}&{$tax_slug}={$term->slug}", false );
         }
