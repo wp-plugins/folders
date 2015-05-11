@@ -53,4 +53,4 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Help keep folders in development ==
 
-Please donate to help us continue development on this plugin. [6-2 Design](http://62design.co.uk/wordpress-plugins/folders/ "Donate to keep this plugin under development").
+Please donate to help us continue development on this plugin. [Donate Here](http://62design.co.uk/wordpress-plugins/folders/ "Donate to keep this plugin under development").
