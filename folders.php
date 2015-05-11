@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Folders
  * Description: Arrange media, pages, custom post types and posts into folders
- * Version: 1.2.2
+ * Version: 1.2.3
  * Author: Steve North, Aaron Taylor (6-2 Design)
  * Author URI: http://62design.co.uk/wordpress-plugins/folders/
  */
@@ -34,8 +34,17 @@ function searchForId($id, $menu) {
       return $key;
     }
   }
-  // return null;
 }
+
+function folders_admin_notice(){
+  $screen = get_current_screen();
+  $getPage = $screen->parent_file;
+  if($getPage == 'folders-settings') {
+    echo '<div class="update-nag"><p><strong>Notice: </strong>Your personal folders will <strong>NOT</strong> show in the admin panel until pages or posts are added to them.</p></div>';
+  }
+}
+
+add_action('admin_notices', 'folders_admin_notice');
 
 // Include Custom Post Types
 include('includes/types.php');

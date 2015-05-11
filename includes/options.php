@@ -25,9 +25,21 @@ add_action('admin_notices', 'folders_admin_notices');
 function folders_admin_page_callback(){
   global $globOptions;
 ?>
+<style>
+  #side-info-column {
+    width: 250px;
+    float: right;
+  }
+  #side-info-column h3 {
+    margin: 10px;
+  }
+  .form-table th {
+    width: 250px;
+  }
+</style>
 <div class="wrap">
   <h2>Folder Settings</h2>
-  <form action="options.php" method="post"><?php
+  <form style="width: 300px; float:left" action="options.php" method="post"><?php
     settings_fields( 'folders_settings' );
     do_settings_sections( __FILE__ );
 
@@ -52,11 +64,25 @@ function folders_admin_page_callback(){
     </table>
     <?php submit_button(); ?>
   </form>
-  <div style="display:block;">
-    <h3>Donate</h3>
-    <strong>Folders is a plugin developed by <a target="_blank" href="http://62design.co.uk">6-2 Design</a>.</strong>
-    <p>Please consider donating a small amount to help us keep Folders in development.</p>
-    <a href="http://62design.co.uk/wordpress-plugins/folders/" target="_blank">Click here to donate</a>
+  <div id="side-info-column">
+    <div class="postbox">
+      <h3><span>Donate</span></h3>
+      <div class="inside">
+        <strong>Folders is a plugin developed by<br/><a target="_blank" href="http://62design.co.uk">6-2 Design</a>.</strong>
+        <p>Please consider donating a small amount to help us keep Folders in development.</p>
+        <a href="http://62design.co.uk/wordpress-plugins/folders/" target="_blank">Click here to donate</a>
+      </div>
     </div>
+  </div>
+
+  <div id="side-info-column" style="clear:right;">
+    <div class="postbox">
+      <h3><span>Rate Folders</span></h3>
+      <div class="inside">
+        <strong>Rate Folders on Wordpress</strong>
+        <p><a href="https://wordpress.org/support/view/plugin-reviews/folders">Please rate the folders plugin</a></p>
+      </div>
+    </div>
+  </div>
 </div>
 <?php }

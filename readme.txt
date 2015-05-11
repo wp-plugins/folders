@@ -31,10 +31,10 @@ Step 4: Either bulk edit or individually add your pages and posts into your new 
 
 NOTE: Media must be added to folders individually from within the Media browser (List View). A bulk edit option will be added in a future version of Folders.
 
-UPDATING FROM 1.1 TO 1.2
-If you come across a bug with your posts or pages no longer showing or the menu positions do not appear where expected, go to "Folder Options" and re-enable the types you want folders to work with to solve the issue. It is due to a change in the way folders are generated for the default posts and pages post types.
-
 == Changelog ==
+
+= 1.2.3 =
+- Minor changes to options page
 
 = 1.2.2 =
 - Added clean-up on un-install
@@ -51,6 +51,6 @@ If you come across a bug with your posts or pages no longer showing or the menu 
 = 1.0 =
 - Folders Plugin Released
 
-== See more plugins from us ==
+== Help keep folders in development ==
 
 Please donate to help us continue development on this plugin. [6-2 Design](http://62design.co.uk/wordpress-plugins/folders/ "Donate to keep this plugin under development").
