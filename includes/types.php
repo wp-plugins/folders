@@ -152,9 +152,9 @@ function folders_posttype_in_admin_menu() {
         }
       }
     }
-
-    remove_submenu_page( "{$edit}?post_type={$type}&{$tax_slug}", "{$edit}?post_type={$type}&{$tax_slug}" );
+    remove_submenu_page( "{$edit}", "edit-tags.php?taxonomy=post_folder" );
     remove_submenu_page( "{$edit}?post_type={$type}", "edit-tags.php?taxonomy={$tax_slug}&amp;post_type={$type}" );
+    remove_submenu_page( "{$edit}", "edit-tags.php?taxonomy={$tax_slug}&amp;post_type={$type}" );
   }
 }
 add_action('admin_menu', 'folders_posttype_in_admin_menu');
@@ -170,7 +170,12 @@ add_filter( 'manage_posts_columns', 'add_folder_posttype_column' );
 
 function add_folder_posttype_column_content( $column_name, $post_id ) {
   if ( $column_name == 'folder' ) {
-    $ter = wp_get_post_terms($post_id, $type.'_folder' );
+    $getType = get_post_type($post_id);
+    if ($getType == 'page') {
+      $ter = wp_get_post_terms($post_id, 'folder' );
+    } else {
+      $ter = wp_get_post_terms($post_id, $getType.'_folder' );
+    }
     $count = count($ter);
     foreach ($ter as $key => $term) {
       if ($count === $key + 1) {
