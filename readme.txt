@@ -14,6 +14,10 @@ Organise your media attachments, custom post types, pages and posts into folders
 
 Folders gives you the ability to better organise the back-end of your WordPress site by allowing you to add pages, posts and media attachments into folders. You can then filter your pages, posts and media by the folder they belong to from within the admin sidebar. A handy plugin for those with lots of pages or posts and masses of media.
 
+Check out a run down of the Folders plugin in use with media attachments. (Thanks to James Olsen for this great video).
+
+[View the How To Video by James Olsen](https://www.youtube.com/watch?v=6ClVwo9OyAc "Video by James Olsen")
+
 == Screenshots ==
 
 1. The Folder View
