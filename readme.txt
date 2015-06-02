@@ -37,6 +37,9 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.5 =
+- Text based changes
+
 = 1.2.4 =
 - Fixed folders not displaying in columns for posts/custom post types
 - Fixed menus not displaying correctly for some users
