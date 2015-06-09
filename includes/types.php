@@ -81,19 +81,21 @@ add_action( 'init', 'add_custom_posttype_folder_taxonomy', 0 );
 
 function folders_add_posttype_taxonomy_filters() {
   global $globOptions, $folder_types, $typenow;
-  foreach($folder_types as $type) {
-    $tax_slug = $type.'_folder';
-    if( $typenow == $type ) {
-      $tax_obj = get_taxonomy($tax_slug);
-      $tax_name = $tax_obj->labels->name;
-      $terms = get_terms($tax_slug);
-      if(count($terms)) {
-        echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
-        echo "<option value=''>Show All $tax_name</option>";
-        foreach ($terms as $term) {
-          echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
+  if ($folder_types) {
+    foreach($folder_types as $type) {
+      $tax_slug = $type.'_folder';
+      if( $typenow == $type ) {
+        $tax_obj = get_taxonomy($tax_slug);
+        $tax_name = $tax_obj->labels->name;
+        $terms = get_terms($tax_slug);
+        if(count($terms)) {
+          echo "<select name='$tax_slug' id='$tax_slug' class='postform'>";
+          echo "<option value=''>Show All $tax_name</option>";
+          foreach ($terms as $term) {
+            echo '<option value='. $term->slug, $_GET[$tax_slug] == $term->slug ? ' selected="selected"' : '','>' . $term->name .' (' . $term->count .')</option>';
+          }
+          echo "</select>";
         }
-        echo "</select>";
       }
     }
   }

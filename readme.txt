@@ -37,6 +37,9 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.6 =
+- Fixed bug with filters breaking if no folders are setup
+
 = 1.2.5 =
 - Text based changes
 
