@@ -37,6 +37,9 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.7 =
+- Fixed issue with post type names showing as underscores rather than spaces in folder names.
+
 = 1.2.6 =
 - Fixed bug with filters breaking if no folders are setup
 
