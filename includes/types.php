@@ -127,7 +127,7 @@ function folders_posttype_in_admin_menu() {
 
 
     $folder = $type == 'attachment' ? 'media' : $type;
-    $upper = $type == 'attachment' ? 'Media' : ucwords(str_replace('-', ' ', $type));
+    $upper = $type == 'attachment' ? 'Media' : ucwords(str_replace(array('-','_'), ' ', $type));
     if ($type == 'page') {
       $tax_slug = 'folder';
     } else {
