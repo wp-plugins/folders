@@ -4,7 +4,7 @@
 /*************************/
 
 function folders_admin_page(){
-    add_menu_page('Folder Settings', 'Folder Settings', 'administrator', 'folders-settings', 'folders_admin_page_callback');
+    add_menu_page('Folder Settings', 'Folder Settings', 'publish_pages', 'folders-settings', 'folders_admin_page_callback');
 }
 add_action('admin_menu', 'folders_admin_page');
 

@@ -5,15 +5,18 @@ Tags: folder, folders, organise, pages, filter, filters, posts, media, attachmen
 Requires at least: 3.0.0
 Tested up to: 4.2.2
 Stable tag: trunk
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GNU General Public License
+License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
 
-Organise your media attachments, custom post types, pages and posts into folders. Perfect for large amounts of pages, posts and media attachments.
+Bulk organise your media attachments, custom post types, pages and posts into folders. A perfect addition to sites with large amounts of pages, posts or media attachments.
 
 == Description ==
 
-Folders gives you the ability to better organise the back-end of your WordPress site by allowing you to add pages, posts and media attachments into folders. You can then filter your pages, posts and media by the folder they belong to from within the admin sidebar. A handy plugin for those with lots of pages or posts and masses of media.
+~ NEW IN v1.3.0 ~ - Bulk folder assignment on attachments/media.
 
+Folders gives you the ability to better organise the back-end of your WordPress site by allowing you to add pages, posts and media attachments into folders. You can then filter your pages, posts and media by the folder they belong to from within the admin sidebar. A handy plugin for those with lots of pages or posts and a whole of media.
+
+** THE FOLLOWING VIDEO MAY NOT BE CORRECT IN PARTS AS OF 12/06/2015 **
 Check out a run down of the Folders plugin in use with media attachments. (Thanks to James Olsen for this great video).
 
 [View the How To Video by James Olsen](https://www.youtube.com/watch?v=6ClVwo9OyAc "Video by James Olsen")
@@ -37,36 +40,40 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.9 =
+- Added partial support for bulk folder editor in attachments/media. (Full support coming shortly (Sorry)).
+- Reduced permissions to editor.
+
 = 1.2.7 =
 - Fixed issue with post type names showing as underscores rather than spaces in folder names.
 
 = 1.2.6 =
-- Fixed bug with filters breaking if no folders are setup
+- Fixed bug with filters breaking if no folders are setup.
 
 = 1.2.5 =
-- Text based changes
+- Text based changes.
 
 = 1.2.4 =
-- Fixed folders not displaying in columns for posts/custom post types
-- Fixed menus not displaying correctly for some users
+- Fixed folders not displaying in columns for posts/custom post types.
+- Fixed menus not displaying correctly for some users.
 
 = 1.2.3 =
-- Minor changes to options page
+- Minor changes to options page.
 
 = 1.2.2 =
-- Added clean-up on un-install
+- Added clean-up on un-install.
 
 = 1.2.1 =
-- Fixed bug with Media folders not being editable
+- Fixed bug with Media folders not being editable.
 
 = 1.2.0 =
-- Added support for media (attachments)
+- Added support for media (attachments).
 
 = 1.1.0 =
-- Added support for custom post types
+- Added support for custom post types.
 
 = 1.0 =
-- Folders Plugin Released
+- Folders Plugin Released.
 
 == Help keep folders in development ==
 
