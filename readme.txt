@@ -12,8 +12,6 @@ Bulk organise your media attachments, custom post types, pages and posts into fo
 
 == Description ==
 
-~ NEW IN v1.3.0 ~ - Bulk folder assignment on attachments/media.
-
 Folders gives you the ability to better organise the back-end of your WordPress site by allowing you to add pages, posts and media attachments into folders. You can then filter your pages, posts and media by the folder they belong to from within the admin sidebar. A handy plugin for those with lots of pages or posts and a whole of media.
 
 ** THE FOLLOWING VIDEO MAY NOT BE CORRECT IN PARTS AS OF 12/06/2015 **
