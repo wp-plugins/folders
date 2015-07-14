@@ -38,6 +38,9 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.11 =
+- Added limited support for Bulk media editing. (Full support coming soon, some users may experience issues with the bulk editor for the time being).
+
 = 1.2.10 =
 - Removed function init causing AJAX errors with wordpress. (To be fixed in a later version).
 

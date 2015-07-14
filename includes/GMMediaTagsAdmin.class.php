@@ -7,8 +7,8 @@
  *
  */
 class GMMediaTagsAdmin {
-	
-	
+
+
 	/**
 	* Class version
 	*
@@ -19,9 +19,9 @@ class GMMediaTagsAdmin {
 	* @var	string
 	*/
 	protected static $version = '0.1.1';
-	
-	
-	
+
+
+
 	/**
 	* Registered taxonomies names
 	*
@@ -31,9 +31,9 @@ class GMMediaTagsAdmin {
 	*
 	* @var	array
 	*/
-	protected static $registered = array();	
-	
-	
+	protected static $registered = array();
+
+
 	/**
 	 * Constructor. Doing nothing
 	 *
@@ -46,9 +46,9 @@ class GMMediaTagsAdmin {
 	function __construct() {
 		_doing_it_wrong( 'GMMediaTagsAdmin::__construct', 'GMMediaTagsAdmin Class is intented to be used statically.' );
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Init the plugin backend. Run on 'admin_init' hook
 	 *
@@ -59,20 +59,20 @@ class GMMediaTagsAdmin {
 	 *
 	 */
 	static function init() {
-		
+
 		if ( ! defined('GMMEDIATAGSPATH') ) die();
-		
+
 		self::$registered = get_object_taxonomies('attachment');
-		
+
 		add_action( 'wp_ajax_add_media_tag_bulk_tr', array(__CLASS__, 'print_tr') );
 		add_action( 'wp_ajax_save_media_tag_bulk', array(__CLASS__, 'save') );
 		add_action( 'admin_notices', array(__CLASS__, 'notices') );
 		add_action( 'admin_enqueue_scripts', array(__CLASS__, 'add_scripts') );
-		
+
 	}
-	
-	
-	
+
+
+
 	/**
 	 * Add the javascript and pass json data to it using 'wp_localize_script'. Run on 'admin_enqueue_scripts' hook
 	 *
@@ -97,10 +97,10 @@ class GMMediaTagsAdmin {
 			wp_localize_script( 'GMMediaTags', 'gm_mediatags_vars', $vars );
 		}
 	}
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * Output json data from an ajax call
 	 *
@@ -119,10 +119,10 @@ class GMMediaTagsAdmin {
 		if ( ! empty($error) || empty($data) ) $data = array('bulk_media_tag' => 'error', 'error' => $error);
 		die ( json_encode( (object)$data) );
 	}
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * Bulk save on ajax the terms
 	 *
@@ -137,7 +137,7 @@ class GMMediaTagsAdmin {
 		if ( ! defined('DOING_AJAX') ) die();
 		if ( ! isset($_POST['formData']) ) self::json_out(false, 'formData_error');
 		parse_str ( $_POST['formData'], $form_data );
-		
+
 		$referer = isset($form_data['_wp_http_referer']) ? $form_data['_wp_http_referer'] : null;
 		$nonce = isset($_POST['media_tag_ver']) ? $_POST['media_tag_ver'] : null;
 		$screen = isset($form_data['screen']) ? $form_data['screen'] : null;
@@ -147,14 +147,14 @@ class GMMediaTagsAdmin {
 		$admin_url = admin_url('upload.php');
 		if ( ! $from || ! isset($from['path']) || $admin_url != site_url() . $from['path'] ) self::json_out(false, 'security error 30');
 		if ( $screen != 'upload' ) self::json_out(false, 'security error 40');
-		
+
 		$orig_qv = array();
 		if ( isset($from['query']) ) parse_str($from['query'], $orig_qv);
 		$taxonomies = isset($form_data['tax_input']) ? $form_data['tax_input'] : array();
 		$clean_taxonomies = isset($form_data['clean_tax']) ? $form_data['clean_tax'] : array();
 		$toclean = array_keys($clean_taxonomies);
 		$attachments = isset($_POST['attachments']) ? $_POST['attachments'] : array();
-		
+
 		if ( ( empty($taxonomies) && empty($clean_taxonomies) ) || empty($attachments) ) self::json_out( array( 'bulk_media_tag' => 'none' ) );
 		$errors = 0;
 		$done = null;
@@ -185,10 +185,10 @@ class GMMediaTagsAdmin {
 		$data = array( 'location' => $location, 'bulk_media_tag' => 'updated');
 		self::json_out( $data );
 	}
-	
-	
-	
-	
+
+
+
+
 	/**
 	 * Print admin notices after update
 	 *
@@ -203,21 +203,21 @@ class GMMediaTagsAdmin {
 		if( $pagenow == 'upload.php' &&  isset($_GET['bulk_media_tag']) && ! empty($_GET['bulk_media_tag']) ) {
 			$result = $_GET['bulk_media_tag'];
 			if ( $result == 'updated' ) {
-				echo '<div class="updated"><p>' . __( 'Attachments updated successfully.', 'gmmediatags') . '</p></div>';		
+				echo '<div class="updated"><p>' . __( 'Attachments updated successfully.', 'gmmediatags') . '</p></div>';
 			} elseif ( $result == 'none' ) {
 				echo '<div class="updated"><p>' . __( 'Nothing to update: no media or no terms selected.', 'gmmediatags') . '</p></div>';
 			} else {
 				echo '<div class="error"><p>' . __( 'Error on update attachments.', 'gmmediatags') . '</p></div>';
 			}
 		}
-		
+
 	}
-	
-	
-	
-	
+
+
+
+
 	/**
-	 * Output the html markup for the edit ui on ajax call 
+	 * Output the html markup for the edit ui on ajax call
 	 *
 	 * @since	0.1.0
 	 *
@@ -263,7 +263,7 @@ class GMMediaTagsAdmin {
 				</div>
         	</div>
         </fieldset>
-        
+
 		<fieldset class="inline-edit-col-center" style="width:<?php echo empty($flat_taxonomies) ? '64' : '32' ?>%; float:right;"><div class="inline-edit-col">
 		<?php foreach ( $hierarchical_taxonomies as $taxonomy ) : ?>
 			<span class="title inline-edit-categories-label"><?php echo esc_html( $taxonomy->labels->name ) ?></span>
@@ -274,7 +274,7 @@ class GMMediaTagsAdmin {
             <?php } ?>
 		<?php endforeach;?>
 		</div></fieldset>
-        
+
         <fieldset class="inline-edit-col-right" style="width:<?php echo empty($hierarchical_taxonomies) ? '64' : '32' ?>%; float:right;"><div class="inline-edit-col">
 			<?php foreach($flat_taxonomies as $taxonomy ) : if ( current_user_can( $taxonomy->cap->assign_terms ) ) : ?>
 			<label class="inline-edit-tags">
@@ -282,8 +282,8 @@ class GMMediaTagsAdmin {
 				<textarea cols="22" rows="1" name="tax_input[<?php echo esc_attr( $taxonomy->name )?>]" class="tax_input_<?php echo esc_attr( $taxonomy->name )?>"></textarea>
 			</label>
 			<?php endif; endforeach;?>
-		</div></fieldset> 
-        
+		</div></fieldset>
+
         <fieldset class="inline-edit-col-full" style="width:100%; float:left;"><div class="inline-edit-col">
         <h4><?php  _e('Remove all terms from: ', 'gmmediatags'); ?></h4>
 		<?php
@@ -291,8 +291,8 @@ class GMMediaTagsAdmin {
 			printf('<label style="float:left; margin-left:6px"><input type="checkbox" name="clean_tax[%s]" value="1"> %s</label>', esc_attr($taxonomy_name), $taxonomies_obj[$taxonomy_name]->labels->name );
 		}
 		?>
-        </div></fieldset> 
-        
+        </div></fieldset>
+
 		<p class="submit inline-assign_media_tag">
 			<input name="bulk_assign_media_tag" id="bulk_assign_media_tag" class="button button-primary alignright" value="<?php _e('Update'); ?>" accesskey="s" type="submit">
             <a accesskey="c" class="button-secondary cancel alignright" style="margin-right:20px;"><?php _e('Cancel'); ?></a>
@@ -305,8 +305,8 @@ class GMMediaTagsAdmin {
         <?php
 		do_action('gm_mediatags_ui_printed');
 		die();
-	}	
-	
-	
-	
+	}
+
+
+
 }
