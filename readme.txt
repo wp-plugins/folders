@@ -19,6 +19,7 @@ Check out a run down of the Folders plugin in use with media attachments. (Thank
 
 [View the How To Video by James Olsen](https://www.youtube.com/watch?v=6ClVwo9OyAc "Video by James Olsen")
 
+
 == Screenshots ==
 
 1. The Folder View
@@ -81,3 +82,5 @@ NOTE: Media must be added to folders individually from within the Media browser 
 == Help keep folders in development ==
 
 Please donate to help us continue development on this plugin. [Donate Here](http://62design.co.uk/wordpress-plugins/folders/ "Donate to keep this plugin under development").
+
+With thanks to Luke Kynaston for the banner graphic.
