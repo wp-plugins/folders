@@ -30,7 +30,8 @@ function add_custom_posttype_folder_taxonomy() {
           'slug' => '',
           'with_front' => false,
           'hierarchical' => false
-          )
+          ),
+        'update_count_callback' => '_update_post_term_count'
         );
       if ($type == 'attachment') {
         $tax_slug = 'media_folder';
@@ -50,7 +51,8 @@ function add_custom_posttype_folder_taxonomy() {
             'menu_name' => __( 'Folders' ),
             ),
           'sort' => true,
-          'show_admin_column' => true
+          'show_admin_column' => true,
+          'update_count_callback' => '_update_post_term_count'
           );
       } elseif ($type == 'page') {
         $tax_slug = 'folder';
@@ -70,7 +72,8 @@ function add_custom_posttype_folder_taxonomy() {
             'menu_name' => __( 'Folders' ),
             ),
           'sort' => true,
-          'show_admin_column' => true
+          'show_admin_column' => true,
+          'update_count_callback' => '_update_post_term_count'
           );
       }
       register_taxonomy($tax_slug, $type, $args);

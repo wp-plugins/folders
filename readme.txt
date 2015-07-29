@@ -39,6 +39,9 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.12 =
+- Fixed term count in media folders.
+
 = 1.2.11 =
 - Added limited support for Bulk media editing. (Full support coming soon, some users may experience issues with the bulk editor for the time being).
 
