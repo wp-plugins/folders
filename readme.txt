@@ -39,6 +39,12 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.14 =
+- Fixed bug where folders filter was not working on pages.
+
+= 1.2.13 =
+- Changed folder icon to better suit wordpress dashboard theme.
+
 = 1.2.12 =
 - Fixed term count in media folders.
 

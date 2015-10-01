@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Folders
  * Description: Arrange media, pages, custom post types and posts into folders
- * Version: 1.2.12
+ * Version: 1.2.14
  * Author: Steve North, Aaron Taylor (6-2 Design)
  * Author URI: http://62design.co.uk/wordpress-plugins/folders/
  */

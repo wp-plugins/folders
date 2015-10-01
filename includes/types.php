@@ -56,6 +56,7 @@ function add_custom_posttype_folder_taxonomy() {
           );
       } elseif ($type == 'page') {
         $tax_slug = 'folder';
+        var_dump($tax_slug);
         $args = array(
           'hierarchical' => true,
           'labels' => array(
@@ -86,7 +87,11 @@ function folders_add_posttype_taxonomy_filters() {
   global $globOptions, $folder_types, $typenow;
   if ($folder_types) {
     foreach($folder_types as $type) {
-      $tax_slug = $type.'_folder';
+      if($type == 'page') {
+        $tax_slug = 'folder';
+      } else {
+        $tax_slug = $type.'_folder';
+      }
       if( $typenow == $type ) {
         $tax_obj = get_taxonomy($tax_slug);
         $tax_name = $tax_obj->labels->name;
@@ -139,9 +144,9 @@ function folders_posttype_in_admin_menu() {
 
 
     if ($type == 'attachment') {
-      add_menu_page( 'Media Folders', 'Media Folders', 'publish_pages', "edit-tags.php?taxonomy=media_folder&post_type=attachment", false, plugin_dir_url(__FILE__).'../assets/img/folder-icon-posts.png', "{$itemKey}.5" );
+      add_menu_page( 'Media Folders', 'Media Folders', 'publish_pages', "edit-tags.php?taxonomy=media_folder&post_type=attachment", false, 'dashicons-portfolio', "{$itemKey}.5" );
     } else {
-      add_menu_page( $upper.' Folders', "{$upper} Folders", 'publish_pages', "{$edit}?post_type={$type}&{$tax_slug}", false, plugin_dir_url(__FILE__).'../assets/img/folder-icon-posts.png', "{$itemKey}.5" );
+      add_menu_page( $upper.' Folders', "{$upper} Folders", 'publish_pages', "{$edit}?post_type={$type}&{$tax_slug}", false, 'dashicons-portfolio', "{$itemKey}.5" );
     }
     add_submenu_page( "{$edit}?post_type={$type}&{$tax_slug}", 'Add/Edit Folders', 'Add/Edit Folders', 'publish_pages', "edit-tags.php?taxonomy={$tax_slug}&post_type={$type}", false );
     $tax_obj = get_taxonomy($tax_slug);
