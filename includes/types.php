@@ -56,7 +56,6 @@ function add_custom_posttype_folder_taxonomy() {
           );
       } elseif ($type == 'page') {
         $tax_slug = 'folder';
-        var_dump($tax_slug);
         $args = array(
           'hierarchical' => true,
           'labels' => array(

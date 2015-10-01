@@ -39,6 +39,9 @@ NOTE: Media must be added to folders individually from within the Media browser 
 
 == Changelog ==
 
+= 1.2.15 =
+- Removed a var_dump.
+
 = 1.2.14 =
 - Fixed bug where folders filter was not working on pages.
 
