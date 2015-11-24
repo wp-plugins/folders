@@ -3,7 +3,7 @@ Contributors: tex0gen, faceonline
 Donate link: http://62design.co.uk/wordpress-plugins/folders/
 Tags: folder, folders, organise, pages, filter, filters, posts, media, attachments
 Requires at least: 3.0.0
-Tested up to: 4.3
+Tested up to: 4.4
 Stable tag: trunk
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl-3.0.en.html
